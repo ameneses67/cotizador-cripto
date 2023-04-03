@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/vite.svg" type="image/x-icon" />
+    <title>Cotizar Criptomonedas</title>
+    <script src="./src/main.ts" type="module"></script>
+  </head>
+  <body class="min-h-screen bg-cyan-950 py-32">
+    <div class="container mx-auto">
+      <div class="row flex gap-16">
+        <div class="one-half column w-3/5">
+          <img src="./src/img/cryptomonedas.png" />
+        </div>
+        <div class="one-half column w-2/5">
+          <form
+            id="formulario"
+            class="flex flex-col gap-8 text-white font-semibold uppercase"
+          >
+            <div class="row flex flex-col gap-2">
+              <label>Elige tu Moneda</label>
+              <select
+                class="u-full-width rounded text-stone-600"
+                id="moneda"
+                name="moneda"
+              >
+                <option value="" selected>--Elige tu moneda--</option>
+                <option value="USD">Dolar Estadounidense</option>
+                <option value="MXN">Peso Mexicano</option>
+                <option value="GBP">Libras</option>
+                <option value="EUR">Euros</option>
+              </select>
+            </div>
+
+            <div class="row flex flex-col gap-2">
+              <label>Elige tu Criptomoneda</label>
+              <select
+                class="u-full-width rounded text-stone-600"
+                id="criptomonedas"
+                name="criptomoneda"
+              >
+                <option value="" selected>--Elige tu criptomoneda--</option>
+              </select>
+            </div>
+            <input
+              class="button-primary u-full-width font-bold uppercase bg-cyan-400 py-3 cursor-pointer rounded"
+              type="submit"
+              value="Cotizar"
+            />
+            <div id="resultado" class="resultado normal-case font-normal"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
