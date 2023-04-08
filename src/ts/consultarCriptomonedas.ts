@@ -5,20 +5,30 @@ interface ICoinInfo {
   FullName: string;
 }
 
-export function consultarCriptomonedas() {
+export async function consultarCriptomonedas() {
   const url =
     "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD";
 
-  fetch(url)
-    .then(
-      (respuesta): Promise<{ Data: { CoinInfo: ICoinInfo }[] }> =>
-        respuesta.json()
-    )
-    .then(
-      (resultado): Promise<{ CoinInfo: ICoinInfo }[]> =>
-        obtenerCriptomonedas(resultado.Data)
-    )
-    .then((criptomonedas) => selectCriptomonedas(criptomonedas));
+  // fetch(url)
+  //   .then(
+  //     (respuesta): Promise<{ Data: { CoinInfo: ICoinInfo }[] }> =>
+  //       respuesta.json()
+  //   )
+  //   .then(
+  //     (resultado): Promise<{ CoinInfo: ICoinInfo }[]> =>
+  //       obtenerCriptomonedas(resultado.Data)
+  //   )
+  //   .then((criptomonedas) => selectCriptomonedas(criptomonedas));
+
+  // async/await
+  try {
+    const respuesta = await fetch(url);
+    const resultado = await respuesta.json();
+    const criptomonedas = await obtenerCriptomonedas(resultado.Data);
+    selectCriptomonedas(criptomonedas);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 // crear un promise que solamente va a resolver cuando haya descargado correctamente las criptomonedas
